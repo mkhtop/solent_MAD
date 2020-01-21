@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">mark-HelloWorld</string>
+    <string name="hello">Hola!</string>
+</resources>
