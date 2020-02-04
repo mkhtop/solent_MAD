@@ -19,13 +19,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.content.Intent;
 
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+
+
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     // my house burnett close
     // http://www.informationfreeway.org/
-    public static final Double DEFAULT_LAT = 50.9246;
-    public static final Double DEFAULT_LON = -1.3719;
-    public static final Integer DEFAULT_ZOOM = 11;
+    public static final Double DEFAULT_LAT = 51.05;
+    public static final Double DEFAULT_LON = -0.729;
+    public static final Double DEFAULT_ZOOM = 16.0;
 
     MapView mv;
 
@@ -136,5 +139,49 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             mv.getController().setCenter(new GeoPoint(lat, lon));
         }
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if(item.getItemId() == R.id.choosemap) {
+            // react to the menu item being selected...
+            Intent intent = new Intent(this, com.example.map1.MapChooseActivity.class);
+            startActivityForResult(intent, 0);
+            return true;
+        } else if(item.getItemId() == R.id.setLocation){
+            Intent intent = new Intent(this, com.example.map1.setLocationActivity.class);
+            startActivity(intent);
+        }
+        return false;
+    }
+
+
+    protected void onActivityResult(int requestCode,int resultCode,Intent intent)
+    {
+
+        if(requestCode==0)
+        {
+
+            if (resultCode==RESULT_OK)
+            {
+                Bundle extras=intent.getExtras();
+                boolean hikebikemap = extras.getBoolean("com.example.hikebikemap");
+                if(hikebikemap==true)
+                {
+                    mv.setTileSource(TileSourceFactory.HIKEBIKEMAP);
+                }
+                else
+                {
+                    mv.setTileSource(TileSourceFactory.MAPNIK);
+                }
+            }
+        }
     }
 }
