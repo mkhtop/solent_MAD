@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Map1</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="button1">Go</string>
+    <string name="button2">Clear</string>
+    <string name="choosemap">Choose Map</string>
+    <string name="setLocation">Set Location</string>
+    <string name="regularview">Regular VIew</string>
+    <string name="hikebikemapview">Hike Bike Map View</string>
+    <string name="selectmap">Select Map</string>
+    <string name="prefs">Preferences</string>
+</resources>
