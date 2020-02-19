@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">text-editor</string>
+    <string name="saveBtn">Save</string>
+    <string name="loadBtn">Load</string>
+</resources>
